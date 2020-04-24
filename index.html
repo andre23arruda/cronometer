@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Cronômetro</title>
+        <link rel="stylesheet" href="CSS/style.css">
+        <link rel="shortcut icon" href='assets/alarm.ico' type="image/x-icon" />
+    </head>
+    <body onload="time_now(); date_now()">
+        <header>
+            <h1>Cronômetro</h1>
+            <h2 id="id_cron">0:00:00:000</h2>
+        </header>
+        <div id="botoes1">
+            <a class="b" onclick="start()">Começar</a>
+            <a class="b" id="botao_parar" onclick="stop()">Parar</a>
+            <a class="b" onclick="restart()">Recomeçar</a>
+            <a class="b" onclick="reset()">Resetar</a>
+        </div>
+            <section id="id_tempo">
+            <div id="div_tempo"></div>
+            <div id="div_data"></div>
+        </section>
+        <footer>
+            <p>&copy; XXT quem é sabe</p>
+            <p>&trade;Desenvolvido por André Arruda</p>
+        </footer>
+        <script src="scripts/script.js"></script>
+    </body>
+</html>
