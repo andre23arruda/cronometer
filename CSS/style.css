@@ -5,6 +5,7 @@ body {
   background-attachment: fixed;
   position: relative;
   margin: 5%;
+  display: inline-block;
 }
 
 header, nav {
