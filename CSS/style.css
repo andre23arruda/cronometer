@@ -4,22 +4,24 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
-  margin: 5%;
-  display: inline-block;
 }
 
 header, nav {
   text-align: center;
-  margin: 5px 0;
+  margin: 5px;
   color: antiquewhite;
   font: bold 24px Arial ;
+
 }
 
+
+
+
 #id_cron{
-  font: bold 72px Arial ;
+  font: bold 60px Arial ;
   margin-bottom: 5px;
   margin-top: 2px;
-  width: 370px;
+  width: 310px;
   text-align: center;
   display: block;
   margin-left: auto;
@@ -28,6 +30,7 @@ header, nav {
 }
 
 #botoes1{
+  display: block;
   text-align: center;
 }
 
@@ -43,8 +46,8 @@ header, nav {
   display: inline-block;
   width: 150px;
   padding: 15px;
-  margin-left: 30%;
-  margin-right: 30%;
+  margin-left: 25%;
+  margin-right: 25%;
   margin-bottom: 10px;
   margin-top: 10px;
 
