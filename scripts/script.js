@@ -1,26 +1,29 @@
+var t1
+var t2
+
 function time_now(){
     var d = new Date()
     var segundos = ('0' + d.getSeconds()).slice(-2)
     var minutos = ('0' +  d.getMinutes()).slice(-2)
     var horas = ('0' + d.getHours()).slice(-2)
-    var hora = `Horário atual: ${horas}:${minutos}:${segundos}`
+    var hora = `Now: ${horas}:${minutos}:${segundos}`
 
     document.getElementById('div_tempo').innerHTML = hora
 
-    setTimeout("time_now()", 1000)  // executa a cada 1 segundo
+    t1 = setTimeout("time_now()", 1000)  // executa a cada 1 segundo
 }
 
 function date_now(){
-    var week_days = ["Domingo", "Segunda-feira", "Terça-feira",
-                     "Quarta-feira", "Quinta-feira",
-                     "Sexta-feira", "Sábado"]
+    var week_days = ["Sunday", "Monday", "Tuesday",
+                     "Wednesday", "Thursday",
+                     "Friday", "Saturday"]
     var d = new Date()
     var d_semana = week_days[d.getDay()]
     var dia = ('0' + d.getDate()).slice(-2)
     var mes = ('0' + (d.getMonth() + 1)).slice(-2)
 
     var div_data = document.getElementById('div_data')
-    div_data.innerHTML = `Data atual: ${d_semana} ${dia}/${mes}/${d.getFullYear()}`
+    div_data.innerHTML = `Today: ${d_semana} ${dia}/${mes}/${d.getFullYear()}`
 }
 
 
@@ -48,7 +51,7 @@ function get_time(){
     resultstr[2] = ('0' + result[2]).slice(-2)
     id_cron.innerHTML = `${result[3]}:${resultstr[2]}:${resultstr[1]}:${resultstr[0]}`
 
-    setTimeout("get_time()", 1) // executa a funcao a cada milissegunda
+    t2 = setTimeout("get_time()", 1) // executa a funcao a cada milissegunda
 }
 
 function time_update(t_now, t_old){
@@ -88,6 +91,7 @@ function reset(){
 
 function stop(){
     document.getElementById('botao_parar').value = true
+    clearTimeout(t2)
 }
 
 function restart(){
