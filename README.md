@@ -1,5 +1,6 @@
-# https://andre23arruda.github.io/cronometroJS/index.html
+# Cronometer
 
-Site de brincadeira de um cronômetro
+## https://andre23arruda.github.io/cronometer/index.html
 
-[![](crono.png "Exemplo")](https://andre23arruda.github.io/cronometer/index.html)
+
+[![](cronometer.png "Exemplo")](https://andre23arruda.github.io/cronometer/index.html)
