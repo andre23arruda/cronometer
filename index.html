@@ -5,28 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Cronometer</title>
-        <link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="styles/index.css">
         <link rel="shortcut icon" href='assets/alarm.ico' type="image/x-icon" />
     </head>
-    <body onload="time_now(); date_now()">
-        <header>
-            <h1>Cronometer</h1>
-            <h2 id="id_cron">0:00:00:000</h2>
-        </header>
-        <div id="botoes1">
-            <a class="b" onclick="start()">Start</a>
-            <a class="b" id="botao_parar" onclick="stop()">Stop</a>
-            <a class="b" onclick="restart()">Restart</a>
-            <a class="b" onclick="reset()">Reset</a>
-        </div>
-            <section id="id_tempo">
-            <div id="div_tempo"></div>
-            <div id="div_data"></div>
-        </section>
-        <footer>
-            <p>&copy; XXT quem é sabe</p>
-            <p>&trade;Developed by André Arruda</p>
+    <body>
+        <main>
+            <header>
+                <h1>Cronometer</h1>
+                <h2 id="id-cronometer">0:00:00:000</h2>
+            </header>
+
+            <section class="button-container">
+                <button class="button" onclick="start()">Start</button>
+                <button class="button" id="button-stop" onclick="stop()">Stop</button>
+                <button class="button" onclick="reset()">Reset</button>
+            </section>
+        </main>
+
+        <footer id="id-time">
+            <div id="div-time-info"></div>
+            <div id="div-day-info"></div>
         </footer>
-        <script src="scripts/script.js"></script>
+
+        <script src="scripts/index.js"></script>
     </body>
 </html>
