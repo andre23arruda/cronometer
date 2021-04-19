@@ -31,8 +31,6 @@ function dateNow(){
     divDayInfo.innerHTML = `Today: ${d_semana} ${dia}/${mes}/${d.getFullYear()}`
 }
 
-timeNow()
-dateNow()
 
 function getTime(){
     arrayTime = timeUpdate()
@@ -67,8 +65,6 @@ function timeUpdate(){
 
 
 function start(){
-    cronometerElement.innerHTML = timeStart
-    arrayTime = [0, 0, 0, 0]
     getTime()
 }
 
@@ -81,3 +77,7 @@ function reset(){
 function stop(){
     clearTimeout(t2)
 }
+
+timeNow()
+dateNow()
+cronometerElement.innerHTML = timeStart
