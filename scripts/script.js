@@ -1,97 +1,83 @@
-function time_now(){
-    var d = new Date()
-    var segundos = ('0' + d.getSeconds()).slice(-2)
-    var minutos = ('0' +  d.getMinutes()).slice(-2)
-    var horas = ('0' + d.getHours()).slice(-2)
-    var hora = `Horário atual: ${horas}:${minutos}:${segundos}`
+var t1, t2
+const cronometerElement = document.getElementById('id-cronometer')
+const dayInfoElement = document.getElementById('div-day-info')
+const buttonStopElement = document.getElementById('button-stop')
+const timeStart = `0:00:00:000`
+var arrayTime = [0, 0, 0, 0]
+const week_days = [
+    "Sunday", "Monday", "Tuesday",
+    "Wednesday", "Thursday",
+    "Friday", "Saturday"
+]
 
-    document.getElementById('div_tempo').innerHTML = hora
+function timeNow(){
+    var date = new Date()
+    var seconds = ('0' + date.getSeconds()).slice(-2)
+    var minutes = ('0' +  date.getMinutes()).slice(-2)
+    var hours = ('0' + date.getHours()).slice(-2)
+    var now = `Now: ${hours}:${minutes}:${seconds}`
 
-    setTimeout("time_now()", 1000)  // executa a cada 1 segundo
+    document.getElementById('div-time-info').innerHTML = now
+    t1 = setTimeout("timeNow()", 1000)  // repeat each 1 segundo
 }
 
-function date_now(){
-    var week_days = ["Domingo", "Segunda-feira", "Terça-feira",
-                     "Quarta-feira", "Quinta-feira",
-                     "Sexta-feira", "Sábado"]
+function dateNow(){
     var d = new Date()
     var d_semana = week_days[d.getDay()]
     var dia = ('0' + d.getDate()).slice(-2)
     var mes = ('0' + (d.getMonth() + 1)).slice(-2)
 
-    var div_data = document.getElementById('div_data')
-    div_data.innerHTML = `Data atual: ${d_semana} ${dia}/${mes}/${d.getFullYear()}`
+    var divDayInfo = document.getElementById('div-day-info')
+    divDayInfo.innerHTML = `Today: ${d_semana} ${dia}/${mes}/${d.getFullYear()}`
 }
 
 
-function get_time(){
-    var id_cron = document.getElementById('id_cron')
-    var botao_parar = document.getElementById('botao_parar')
+function getTime(){
+    arrayTime = timeUpdate()
 
-    if(document.getElementById('div_data').value == undefined){ // inicia valores
-        document.getElementById('div_data').value = [0, 0, 0, 0]
-        document.getElementById('botao_parar').value = false
-    }
+    var arrayTimestr = [
+        ('00' + parseInt(1000 * arrayTime[0]/200)).slice(-3),
+        ('0' + arrayTime[1]).slice(-2),
+        ('0' + arrayTime[2]).slice(-2),
+    ]
+    cronometerElement.innerHTML = `${arrayTime[3]}:${arrayTimestr[2]}:${arrayTimestr[1]}:${arrayTimestr[0]}`
 
-    result = document.getElementById('div_data').value
-    resultstr = []
-
-    if(botao_parar.value == false){
-        var t = new Date
-        var t_now = Number(t.getMilliseconds())
-        var t_old = document.getElementById('div_data').value[0]
-        var result = time_update(t_now, t_old)
-    }
-
-    resultstr[0] = ('00' + result[0]).slice(-3)
-    resultstr[1] = ('0' + result[1]).slice(-2)
-    resultstr[2] = ('0' + result[2]).slice(-2)
-    id_cron.innerHTML = `${result[3]}:${resultstr[2]}:${resultstr[1]}:${resultstr[0]}`
-
-    setTimeout("get_time()", 1) // executa a funcao a cada milissegunda
+    t2 = setTimeout("getTime()", 0.1) // repeat each milisecond
 }
 
-function time_update(t_now, t_old){
-    var result = document.getElementById('div_data').value
 
-    if(t_now < t_old){ // segundos
-        result[1] += 1
+function timeUpdate(){
+    arrayTime[0] += 1
+    if (arrayTime[0] >= 200) {
+        arrayTime[0] = 0
+        arrayTime[1] += 1
     }
-    if(result[1] == 60){ // minutos
-        result[1] = 0
-        result[2] += 1
+    if (arrayTime[1] >= 60) {
+        arrayTime[1] = 0
+        arrayTime[2] += 1
     }
-    if(result[2] == 60){ // hora
-        result[2] = 0
-        result[3] += 1
+    if (arrayTime[2] >= 60) {
+        arrayTime[2] = 0
+        arrayTime[3] += 1
     }
-    result[0] = t_now
-
-    document.getElementById('div_data').value = result
-    return result
+    return arrayTime
 }
 
 
 function start(){
-    document.getElementById('id_cron').innerHTML = `0:00:00:000`
-    document.getElementById('div_data').value = [0, 0, 0, 0]
-    document.getElementById('botao_parar').value = false
-    get_time()
+    getTime()
 }
 
 function reset(){
-    document.getElementById('id_cron').innerHTML = `0:00:00:000`
-    document.getElementById('div_data').value = [0, 0, 0, 0]
-    document.getElementById('botao_parar').value = false
+    cronometerElement.innerHTML = timeStart
+    arrayTime = [0, 0, 0, 0]
     stop()
 }
 
 function stop(){
-    document.getElementById('botao_parar').value = true
+    clearTimeout(t2)
 }
 
-function restart(){
-    document.getElementById('botao_parar').value = false
-    get_time()
-}
-
+timeNow()
+dateNow()
+cronometerElement.innerHTML = timeStart
