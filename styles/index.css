@@ -66,6 +66,11 @@ header h1, header h2 {
 	outline: none;
 }
 
+.button.disabled {
+	background-color: rgb(61, 29, 29);
+	cursor: not-allowed;
+}
+
 
 footer {
     color: aliceblue;
