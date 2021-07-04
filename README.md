@@ -3,5 +3,5 @@
 </h1>
 
 <p align="center">
-    <img alt="Cronometer" src="images/cronometer.png" width="410px" />
+    <img alt="Cronometer" src="images/cronometer.png" width="400px" />
 </p>
