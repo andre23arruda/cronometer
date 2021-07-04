@@ -1,6 +1,7 @@
-# Cronometer
+<h1 align="center">
+    <a href="https://andre23arruda.github.io/cronometer/index.html">Cronometer</a>
+</h1>
 
-## https://andre23arruda.github.io/cronometer/index.html
-
-
-[![](cronometer.png "Exemplo")](https://andre23arruda.github.io/cronometer/index.html)
+<p align="center">
+    <img alt="Cronometer" src="images/cronometer.png" width="400px" />
+</p>
